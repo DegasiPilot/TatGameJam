@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  AttackDistance: 2
+  AttackDistance: 3
   Damage: 1
   RechargeTime: 0.5
 --- !u!114 &-7240526284890056016

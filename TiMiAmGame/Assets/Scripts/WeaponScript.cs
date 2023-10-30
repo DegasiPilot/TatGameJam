@@ -29,7 +29,6 @@ public class WeaponScript : MonoBehaviour
             transform.localPosition = Vector2.MoveTowards(transform.localPosition, EndPos, AnimSpeed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
-        transform.localPosition = Vector2.zero;
         attackReady = false;
         trigger.enabled = false;
         StartCoroutine(Recharge());
