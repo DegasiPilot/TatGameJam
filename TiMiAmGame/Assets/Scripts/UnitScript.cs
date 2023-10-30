@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class UnitScript : MonoBehaviour
 {
-    public int HP;
+    public double HP;
 
-    public void GetDamage(int damage)
+    public void GetDamage(double damage)
     {
-
+        HP -= damage;
+        if (HP <= 0)
+            gameObject.SetActive(false);
     }
 }
