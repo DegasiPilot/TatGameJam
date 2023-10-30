@@ -22,6 +22,6 @@ public class GameManager : MonoBehaviour
         Player.SetUp();
         Enemies.ForEach(x => x.SetUp(Player));
         unitScripts.ForEach(x => x.SetUp());
-        enemySpawner.SetUp(Player);
+        enemySpawner.SetUp(Player, Units);
     }
 }

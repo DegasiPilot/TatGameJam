@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackReady: 0
-  AttackDistance: 2
+  AttackDistance: 1.5
   Damage: 1
   RechargeTime: 0.5
   AnimSpeed: 5

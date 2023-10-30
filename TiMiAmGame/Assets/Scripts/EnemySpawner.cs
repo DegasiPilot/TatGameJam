@@ -13,11 +13,13 @@ public class EnemySpawner : MonoBehaviour
 
     private Transform[] Spawns;
     private PlayerController player;
+    private GameObject units;
 
-    public void SetUp(PlayerController player)
+    public void SetUp(PlayerController player, GameObject Units)
     {
         Spawns = GetComponentsInChildren<Transform>().Where(x => x!= transform).ToArray();
         this.player = player;
+        units = Units;
         StartCoroutine(SpawnEnemies());
     }
 
@@ -31,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
             enemy = Instantiate(enemy, spawn);
             enemy.GetComponent<EnemyController>().SetUp(player);
             enemy.GetComponent<UnitScript>().SetUp();
+            enemy.transform.SetParent(units.transform);
             i++;
             yield return new WaitForSeconds(SpawnDelay);
         }
@@ -44,5 +47,6 @@ public class EnemySpawner : MonoBehaviour
         GameObject enemy = Instantiate(Boss, spawn);
         enemy.GetComponent<EnemyController>().SetUp(player);
         enemy.GetComponent<UnitScript>().SetUp();
+        enemy.transform.SetParent(units.transform);
     }
 }
