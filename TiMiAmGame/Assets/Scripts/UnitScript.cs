@@ -14,7 +14,7 @@ public class UnitScript : MonoBehaviour
     public void SetUp()
     {
         currentHP = MaxHP;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (healthBar != null) {
             healthBar.maxValue = MaxHP;
             healthBar.value = currentHP;
@@ -24,9 +24,9 @@ public class UnitScript : MonoBehaviour
     public void GetDamage(float damage)
     {
         currentHP -= damage;
-        StartCoroutine(DamageAnim());
         if (currentHP <= 0)
             Death();
+        StartCoroutine(DamageAnim());
         if (healthBar != null)
             healthBar.value = currentHP;
     }
@@ -40,6 +40,6 @@ public class UnitScript : MonoBehaviour
 
     private void Death()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
