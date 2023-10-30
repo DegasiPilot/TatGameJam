@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     public int Speed;
     public double AttackDistance;
-    public double Damage;
+    public float Damage;
     public float RechargeTime;
 
     private PlayerController player;

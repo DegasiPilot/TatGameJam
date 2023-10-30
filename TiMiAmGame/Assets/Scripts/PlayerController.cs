@@ -7,12 +7,15 @@ public class PlayerController : MonoBehaviour
     public float speed = 7;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private Camera mainCamera;
+    private RaycastHit hit;
 
     // Start is called before the first frame update
     public void SetUp()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -33,6 +36,20 @@ public class PlayerController : MonoBehaviour
         else if (h < 0)
         {
             spriteRenderer.flipX = false;
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 30f))
+            {
+                if (hit.transform)
+                {
+
+                }
+            }
         }
     }
 }
