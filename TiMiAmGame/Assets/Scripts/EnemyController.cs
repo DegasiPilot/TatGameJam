@@ -9,12 +9,12 @@ public class EnemyController : MonoBehaviour
     public double Damage;
     public float RechargeTime;
 
-    private GameObject player;
+    private PlayerController player;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool attackReady;
 
-    public void SetUp(GameObject player)
+    public void SetUp(PlayerController player)
     {
         this.player = player;
         rb = GetComponent<Rigidbody2D>();
