@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject Units;
+    public EnemySpawner enemySpawner;
 
     [HideInInspector] public PlayerController Player;
     [HideInInspector] public List<EnemyController> Enemies;
@@ -21,5 +22,6 @@ public class GameManager : MonoBehaviour
         Player.SetUp();
         Enemies.ForEach(x => x.SetUp(Player));
         unitScripts.ForEach(x => x.SetUp());
+        enemySpawner.SetUp(Player);
     }
 }
