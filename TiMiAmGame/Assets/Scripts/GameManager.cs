@@ -24,7 +24,17 @@ public class GameManager : MonoBehaviour
         
         Player.SetUp(Obstacles);
         Enemies.ForEach(x => x.SetUp(Player,Camp));
-        unitScripts.ForEach(x => x.SetUp(x.TryGetComponent(out playerController)));
+        bool isPlayer;
+        UnitScript campUnit = Camp.GetComponent<UnitScript>();
+        foreach(UnitScript unit in unitScripts)
+        {
+            isPlayer = unit.TryGetComponent(out playerController);
+            unit.SetUp(
+                isPlayer,
+                isPlayer || unit == campUnit
+                );
+        }
+        unitScripts.ForEach(x => x.SetUp(x.TryGetComponent(out playerController), true));
         EnemySpawner.SetUp(Player, Units, Camp);
     }
 }

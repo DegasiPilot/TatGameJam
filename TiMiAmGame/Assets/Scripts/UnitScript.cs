@@ -11,8 +11,9 @@ public class UnitScript : Music
     [HideInInspector] float currentHP;
     private SpriteRenderer spriteRenderer;
     private bool isPlayer;
+    private bool isImportant;
 
-    public void SetUp(bool isPlayer)
+    public void SetUp(bool isPlayer, bool isImportant = false)
     {
         currentHP = MaxHP;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -21,6 +22,7 @@ public class UnitScript : Music
             healthBar.value = currentHP;
         }
         this.isPlayer = isPlayer;
+        this.isImportant = isImportant;
     }
 
     public void GetDamage(float damage)
@@ -42,9 +44,13 @@ public class UnitScript : Music
 
     private void Death()
     {
-        if (isPlayer)
+        if (isImportant)
         {
-            PlaySound(objsound[1]);
+            if (isPlayer)
+            {
+                PlaySound(objsound[1]);
+                
+            }
             Time.timeScale = 0;
         }
         Destroy(gameObject);
