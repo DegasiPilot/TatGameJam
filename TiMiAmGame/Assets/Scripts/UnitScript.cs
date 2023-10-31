@@ -44,7 +44,7 @@ public class UnitScript : Music
     {   
         if(isPlayer)
             PlaySound(objsound[1]);
-        gameObject.SetActive(false);
-        
+        Destroy(gameObject);
+        Time.timeScale = 0;
     }
 }
