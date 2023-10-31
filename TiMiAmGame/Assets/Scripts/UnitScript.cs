@@ -10,8 +10,9 @@ public class UnitScript : MonoBehaviour
 
     [HideInInspector] float currentHP;
     private SpriteRenderer spriteRenderer;
+    private bool isPlayer;
 
-    public void SetUp()
+    public void SetUp(bool isPlayer)
     {
         currentHP = MaxHP;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -19,6 +20,7 @@ public class UnitScript : MonoBehaviour
             healthBar.maxValue = MaxHP;
             healthBar.value = currentHP;
         }
+        this.isPlayer = isPlayer;
     }
 
     public void GetDamage(float damage)
@@ -40,6 +42,8 @@ public class UnitScript : MonoBehaviour
 
     private void Death()
     {
+        if (isPlayer)
+            Time.timeScale = 0;
         Destroy(gameObject);
     }
 }

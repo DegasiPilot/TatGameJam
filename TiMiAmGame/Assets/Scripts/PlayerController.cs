@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D weaponTrigger;
+    private GameObject obstacles;
 
     // Start is called before the first frame update
-    public void SetUp()
+    public void SetUp(GameObject obstacles)
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        Weapon.SetUp();
+        this.obstacles = obstacles;
+        Weapon.SetUp(obstacles);
         weaponTrigger = Weapon.GetComponent<BoxCollider2D>();
     }
 
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         direction.Normalize();
-        Weapon.transform.localPosition = direction;
+        Weapon.transform.localPosition = direction * Weapon.HoldDistance;
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Weapon.transform.localRotation = Quaternion.Euler(0f, 0f, rotZ);
         if (Input.GetMouseButtonDown(0))

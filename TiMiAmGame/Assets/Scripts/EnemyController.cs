@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public int Speed;
+    public float Speed;
     public double AttackDistance;
     public float Damage;
     public float RechargeTime;
@@ -13,29 +13,34 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool attackReady;
+    private GameObject camp;
 
-    public void SetUp(PlayerController player)
+    public void SetUp(PlayerController player, GameObject camp)
     {
         this.player = player;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
         attackReady = true;
+        this.camp = camp;
     }
 
     private void FixedUpdate()
     {
-        Vector2 playerRelativePos = player.transform.position - transform.position;
-        if (playerRelativePos.magnitude <= AttackDistance)
+        Vector2 playerPos = player.transform.position - transform.position;
+        Vector2 campPos = camp.transform.position - transform.position;
+        GameObject target = playerPos.magnitude <= campPos.magnitude ? player.gameObject : camp;
+        Vector2 targetRelativePos = target == player.gameObject ? playerPos : campPos;
+        if (targetRelativePos.magnitude <= AttackDistance)
         {
             rb.velocity = Vector2.zero;
             if(attackReady)
-                Attack(player.GetComponent<UnitScript>()); 
+                Attack(target.GetComponent<UnitScript>()); 
         }
         else
         {
-            rb.velocity = (player.transform.position - transform.position).normalized * Speed;
+            rb.velocity = (target.transform.position - transform.position).normalized * Speed;
         }
-        flip(playerRelativePos.x);
+        flip(targetRelativePos.x);
     }
 
     private void Attack(UnitScript unit)
