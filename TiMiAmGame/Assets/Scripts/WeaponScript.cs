@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponScript : MonoBehaviour
+public class WeaponScript : Music
 {
     [HideInInspector] public bool attackReady;
 
@@ -32,6 +32,7 @@ public class WeaponScript : MonoBehaviour
         attackReady = false;
         trigger.enabled = false;
         StartCoroutine(Recharge());
+        PlaySound(objsound[0]);
     }
 
     private IEnumerator Recharge()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : Music
 {
     public int Speed;
     public double AttackDistance;
@@ -43,6 +43,7 @@ public class EnemyController : MonoBehaviour
         unit.GetDamage(Damage);
         attackReady = false;
         StartCoroutine(Recharge());
+        PlaySound(objsound[0]);
     }
 
     private IEnumerator Recharge()

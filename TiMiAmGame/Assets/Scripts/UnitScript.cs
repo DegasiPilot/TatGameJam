@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitScript : MonoBehaviour
+public class UnitScript : Music
 {
     public float MaxHP;
     public Slider healthBar;
@@ -41,5 +41,6 @@ public class UnitScript : MonoBehaviour
     private void Death()
     {
         Destroy(gameObject);
+        PlaySound(objsound[1]);
     }
 }
