@@ -392,6 +392,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1c184311669344097bda80d4bf6899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objsound:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 5ba1e7172157a9543a5b3a64be9b322c, type: 3}
   MaxHP: 10
   healthBar: {fileID: 9064668486870854682}
 --- !u!1 &7635699022772883099

@@ -207,8 +207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objsound:
   - {fileID: 8300000, guid: 509f258202ec2dd48ac143e17a1e5404, type: 3}
+  - {fileID: 8300000, guid: bd1fb30f3792abf49b2dbf02f7173f0f, type: 3}
   Speed: 4.5
-  DetauchDistance: 10
   AttackDistance: 3.8
   Damage: 1
   RechargeTime: 0.4

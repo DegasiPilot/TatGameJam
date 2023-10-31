@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710a5dc6df36a4f4eba035302b68e46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objsound:
+  - {fileID: 8300000, guid: 6a433bacdd9a6084aa3a21049290bb6f, type: 3}
   attackReady: 0
   HoldDistance: 1
   AttackDistance: 1.5

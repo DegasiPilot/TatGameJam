@@ -41,10 +41,10 @@ public class UnitScript : Music
     }
 
     private void Death()
-    {
-        if (isPlayer)
-            Time.timeScale = 0;
-        Destroy(gameObject);
-        PlaySound(objsound[1]);
+    {   
+        if(isPlayer)
+            PlaySound(objsound[1]);
+        gameObject.SetActive(false);
+        
     }
 }
