@@ -29,13 +29,13 @@ public class WeaponScript : Music
     {
         trigger.enabled = true;
         Vector3 EndPos = direction * AttackDistance;
+        attackReady = false;
         while (transform.localPosition != EndPos && !blocked)
         {
             transform.localPosition = Vector2.MoveTowards(transform.localPosition, EndPos, AnimSpeed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
         blocked = false;
-        attackReady = false;
         trigger.enabled = false;
         StartCoroutine(Recharge());
         PlaySound(objsound[0]);

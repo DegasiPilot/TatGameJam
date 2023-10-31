@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
         yield return  new WaitForSeconds(BossDelay);
         Transform spawn = Spawns[Random.Range(0, Spawns.Count())];
         GameObject enemy = Instantiate(Boss, spawn);
-        enemy.GetComponent<EnemyController>().SetUp(player,camp);
+        enemy.GetComponent<BossScript>().SetUp(player);
         enemy.GetComponent<UnitScript>().SetUp(false);
         enemy.transform.SetParent(units.transform);
     }
