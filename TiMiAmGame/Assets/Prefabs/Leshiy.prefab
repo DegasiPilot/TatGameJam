@@ -153,7 +153,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.27, y: -0.19}
+  m_Offset: {x: 0, y: -0.19}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -209,7 +209,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6a433bacdd9a6084aa3a21049290bb6f, type: 3}
   - {fileID: 8300000, guid: bd1fb30f3792abf49b2dbf02f7173f0f, type: 3}
   Speed: 3
-  AttackDistance: 3.5
+  AttackDistance: 3.2
   Damage: 2
   RechargeTime: 0.5
 --- !u!114 &-7240526284890056016
