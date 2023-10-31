@@ -11,7 +11,7 @@ public class MenuControl : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Level1");
     }
 
     public void OpnSett()

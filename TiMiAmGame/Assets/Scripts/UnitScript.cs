@@ -49,7 +49,6 @@ public class UnitScript : Music
             if (isPlayer)
             {
                 PlaySound(objsound[1]);
-                
             }
             Time.timeScale = 0;
         }
