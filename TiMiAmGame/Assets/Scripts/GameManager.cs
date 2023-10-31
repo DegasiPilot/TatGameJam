@@ -18,10 +18,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        unitScripts = Units.GetComponentsInChildren<UnitScript>().ToList();
         Player = Units.GetComponentInChildren<PlayerController>();
         Enemies = Units.GetComponentsInChildren<EnemyController>().ToList();
-        unitScripts = Units.GetComponentsInChildren<UnitScript>().ToList();
-
+        
         Player.SetUp(Obstacles);
         Enemies.ForEach(x => x.SetUp(Player,Camp));
         unitScripts.ForEach(x => x.SetUp(x.TryGetComponent(out playerController)));
