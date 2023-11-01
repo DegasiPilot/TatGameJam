@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objsound: []
-  MaxHP: 2
+  MaxHP: 1
   healthBar: {fileID: 0}
 --- !u!82 &2672974591316933836
 AudioSource:

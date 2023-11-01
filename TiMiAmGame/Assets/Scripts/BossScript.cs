@@ -65,6 +65,11 @@ public class BossScript : MonoBehaviour
         StartCoroutine(Recharge());
     }
 
+    public void shellHit(UnitScript unit)
+    {
+        unit.GetDamage(Damage);
+    }
+
     private IEnumerator Recharge()
     {
         yield return new WaitForSeconds(RechargeTime);
