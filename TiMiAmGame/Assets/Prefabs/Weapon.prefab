@@ -52,7 +52,7 @@ MonoBehaviour:
   HoldDistance: 1
   AttackDistance: 2.2
   Damage: 1
-  RechargeTime: 0.5
+  RechargeTime: 0.4
   AnimSpeed: 5
 --- !u!61 &4168635392142344707
 BoxCollider2D:

@@ -166,7 +166,7 @@ MonoBehaviour:
   Speed: 5
   AttackDistance: 3.5
   Damage: 1
-  RechargeTime: 0.4
+  RechargeTime: 0.5
 --- !u!114 &-7240526284890056016
 MonoBehaviour:
   m_ObjectHideFlags: 0
