@@ -174,7 +174,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d12ef9fea577e944ab786acce91528c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objsound: []
-  MaxHP: 10
+  MaxHP: 15
   healthBar: {fileID: 6362891930208881908}
 --- !u!114 &6733218452525662112
 MonoBehaviour:
@@ -364,7 +364,7 @@ MonoBehaviour:
   Speed: 4
   AttackDistance: 10
   Damage: 4
-  RechargeTime: 2
+  RechargeTime: 0.8
   Shell: {fileID: 1220337250591968925, guid: 453e6147e49bab146916a69e2d7ce12f, type: 3}
   shellSpeed: 7
 --- !u!50 &3152730278242176604

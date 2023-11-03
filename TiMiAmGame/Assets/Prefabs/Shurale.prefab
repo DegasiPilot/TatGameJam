@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a4a825d835891d649bd057dcc9f065dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -163,7 +163,7 @@ MonoBehaviour:
   objsound:
   - {fileID: 8300000, guid: 509f258202ec2dd48ac143e17a1e5404, type: 3}
   - {fileID: 8300000, guid: bd1fb30f3792abf49b2dbf02f7173f0f, type: 3}
-  Speed: 5
+  Speed: 6
   AttackDistance: 3.5
   Damage: 1
   RechargeTime: 0.5

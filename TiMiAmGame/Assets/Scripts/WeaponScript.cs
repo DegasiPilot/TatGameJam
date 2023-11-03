@@ -30,6 +30,7 @@ public class WeaponScript : Music
         trigger.enabled = true;
         Vector3 EndPos = direction * AttackDistance;
         attackReady = false;
+        StartCoroutine(Recharge());
         while (transform.localPosition != EndPos && !blocked)
         {
             transform.localPosition = Vector2.MoveTowards(transform.localPosition, EndPos, AnimSpeed * Time.deltaTime);
@@ -37,7 +38,6 @@ public class WeaponScript : Music
         }
         blocked = false;
         trigger.enabled = false;
-        StartCoroutine(Recharge());
         PlaySound(objsound[0]);
     }
 
@@ -59,6 +59,7 @@ public class WeaponScript : Music
         if(collision.TryGetComponent(out unit))
         {
             unit.GetDamage(Damage);
+            blocked = true;
         }
     }
 }
