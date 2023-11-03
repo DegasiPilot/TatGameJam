@@ -1204,8 +1204,8 @@ MonoBehaviour:
   Enemies:
   - {fileID: 8395926219550046359, guid: a03db4aa266339b409c5fee2243e11a4, type: 3}
   - {fileID: 8395926219550046359, guid: cda4bc5233d4f9448b5766c85b7e926a, type: 3}
-  SpawnDelay: 1
-  SpawnCount: 5
+  SpawnDelay: 1.8
+  SpawnCount: 15
   Boss: {fileID: 4912933663062637584, guid: 2e9a7e510fcf79647b28c5ce26c6d004, type: 3}
   BossDelay: 10
 --- !u!1 &653898673 stripped

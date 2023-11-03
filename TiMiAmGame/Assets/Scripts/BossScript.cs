@@ -9,15 +9,20 @@ public class BossScript : MonoBehaviour
     public float Damage;
     public float RechargeTime;
     public GameObject Shell;
-    public float AnimSpeed;
+    public float shellSpeed;
 
     private PlayerController player;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private UnitScript unitScript;
     private bool attackReady;
-    private BoxCollider2D trigger;
-    private GameObject target;
     private Vector2 targetRelativePos;
+
+    private Vector2 shellOffset;
+    private Vector2 shellEndPos;
+    private float shellRotZ;
+    private Quaternion shellRotation;
+    private Vector2 shellPosition;
 
     public void SetUp(PlayerController player)
     {
@@ -25,9 +30,8 @@ public class BossScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
         attackReady = true;
-        trigger = GetComponent<BoxCollider2D>();
-        trigger.enabled = false;
-        target = player.gameObject;
+        shellOffset = GetComponent<CapsuleCollider2D>().size / 2;
+        unitScript = GetComponent<UnitScript>();
     }
 
     private void FixedUpdate()
@@ -37,37 +41,25 @@ public class BossScript : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             if (attackReady)
-                StartCoroutine(Attack(targetRelativePos.normalized));
+                Attack(targetRelativePos.normalized);
         }
         else
         {
-            rb.velocity = (target.transform.position - transform.position).normalized * Speed;
+            rb.velocity = targetRelativePos.normalized * Speed;
         }
         flip(targetRelativePos.x);
     }
 
-    private IEnumerator Attack(Vector3 direction)
+    private void Attack(Vector2 direction)
     {
-        trigger.enabled = true;
-        Vector3 EndPos = direction * AttackDistance;
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(0f, 0f, rotZ);
-        GameObject currentShell = Instantiate(Shell, transform.position + direction, rotation, transform);
-        attackReady = false;
-        while (currentShell.transform.localPosition != EndPos)
-        {
-            currentShell.transform.localPosition = Vector2.MoveTowards(currentShell.transform.localPosition, EndPos, AnimSpeed * Time.deltaTime);
-            yield return new WaitForEndOfFrame();
-        }
-        trigger.enabled = false;
-        StartCoroutine(Recharge());
+        shellEndPos = (Vector2)transform.position + direction * AttackDistance;
+        shellRotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        shellRotation = Quaternion.Euler(0f, 0f, shellRotZ + 180);
+        shellPosition = (Vector2)transform.position + direction * shellOffset;
+        GameObject currentShell = Instantiate(Shell, shellPosition, shellRotation);
+        currentShell.GetComponent<ShellScript>().SetUp(shellSpeed, shellEndPos, Damage, unitScript);
         attackReady = false;
         StartCoroutine(Recharge());
-    }
-
-    public void shellHit(UnitScript unit)
-    {
-        unit.GetDamage(Damage);
     }
 
     private IEnumerator Recharge()
