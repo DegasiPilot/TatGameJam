@@ -964,7 +964,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 2e3bc2bf6eb87a04688607640ec43203, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1181,7 +1181,7 @@ Transform:
   m_GameObject: {fileID: 313284284}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -31.5, z: -10}
+  m_LocalPosition: {x: 23.8, y: -31.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1342,7 +1342,7 @@ Transform:
   m_GameObject: {fileID: 391272620}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.7, y: -20.3, z: -10}
+  m_LocalPosition: {x: 34.7, y: -20.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1606,7 +1606,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1987,8 +1987,9 @@ GameObject:
   m_Component:
   - component: {fileID: 637256597}
   - component: {fileID: 637256598}
+  - component: {fileID: 637256599}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2003,7 +2004,7 @@ Transform:
   m_GameObject: {fileID: 637256596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: -23, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2030,9 +2031,24 @@ MonoBehaviour:
   - {fileID: 8395926219550046359, guid: a03db4aa266339b409c5fee2243e11a4, type: 3}
   - {fileID: 8395926219550046359, guid: cda4bc5233d4f9448b5766c85b7e926a, type: 3}
   SpawnDelay: 1
-  SpawnCount: 15
+  SpawnCount: 0
   Boss: {fileID: 4912933663062637584, guid: 2e9a7e510fcf79647b28c5ce26c6d004, type: 3}
-  BossDelay: 0
+  BossDelay: 1
+--- !u!114 &637256599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637256596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6a9383ae7b28c4e8666b74e05baf39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 1769589042507780330, guid: 2f8a201163381f3449ab27389369b200, type: 3}
+  MinOffset: 15
+  MaxOffset: 70
 --- !u!4 &652767182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5925666140943158132, guid: 03b3aa92860943b47899d11f3daae484, type: 3}
@@ -2271,7 +2287,7 @@ Transform:
   m_GameObject: {fileID: 894804729}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.4, y: 26, z: -10}
+  m_LocalPosition: {x: 28.4, y: 26, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2493,6 +2509,7 @@ MonoBehaviour:
   EnemySpawner: {fileID: 637256598}
   Obstacles: {fileID: 1345316441}
   Camp: {fileID: 494391829}
+  ItemSpawner: {fileID: 637256599}
   Player: {fileID: 1451567279}
   Enemies: []
 --- !u!4 &1015238241
@@ -2969,7 +2986,7 @@ Transform:
   m_GameObject: {fileID: 1169950020}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17, y: 12.2, z: -10}
+  m_LocalPosition: {x: 40, y: 12.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3843,7 +3860,7 @@ Transform:
   m_GameObject: {fileID: 1643160209}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.6, y: -6.5, z: -10}
+  m_LocalPosition: {x: 41.6, y: -6.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4957,22 +4974,6 @@ PrefabInstance:
     - target: {fileID: 254097076197117905, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 344988508735442194, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
-      propertyPath: AnimSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 344988508735442194, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
-      propertyPath: HoldDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 344988508735442194, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
-      propertyPath: RechargeTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 344988508735442194, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
-      propertyPath: AttackDistance
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7312372835518787366, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
       propertyPath: m_Name
