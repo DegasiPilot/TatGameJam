@@ -363,11 +363,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 4
   AttackDistance: 10
-  Damage: 2
+  Damage: 4
   RechargeTime: 2
   Shell: {fileID: 1220337250591968925, guid: 453e6147e49bab146916a69e2d7ce12f, type: 3}
   shellSpeed: 7
-  ShellStartDistance: 0
 --- !u!50 &3152730278242176604
 Rigidbody2D:
   serializedVersion: 4
