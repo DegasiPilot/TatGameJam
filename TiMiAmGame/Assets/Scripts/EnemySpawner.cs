@@ -47,6 +47,7 @@ public class EnemySpawner : MonoBehaviour
     public IEnumerator SpawnBoss()
     {
         yield return  new WaitForSeconds(BossDelay);
+        gameManager.SetQuest("Одолейте Кота Баюна!");
         Transform spawn = Spawns[Random.Range(0, Spawns.Count())];
         GameObject boss = Instantiate(Boss, spawn);
         boss.GetComponent<BossScript>().SetUp(player, gameManager);

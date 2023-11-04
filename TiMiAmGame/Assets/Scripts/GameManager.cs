@@ -39,11 +39,13 @@ public class GameManager : MonoBehaviour
         loseScripts = Units.GetComponentsInChildren<LoseOnDie>().ToList();
         loseScripts.ForEach(x => x.SetUp(this));
         EnemySpawner.SetUp(Player, Units, Camp, this);
+        SetQuest("Защитите лагерь!");
         Time.timeScale = 1;
     }
 
     public IEnumerator BossSlain()
     {
+        SetQuest("Найдите ингридиент!");
         yield return new WaitForEndOfFrame();
         ItemSpawner.Spawn(this);
     }
@@ -51,12 +53,24 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         MenuSettings.OnWin();
+        SetTimeRemain(0);
         Time.timeScale = 0;
     }
 
     public void Lose(string loseCause)
     {
         MenuSettings.OnLose(loseCause);
+        SetTimeRemain(0);
         Time.timeScale = 0;
+    }
+
+    public void SetTimeRemain(float time)
+    {
+        MenuSettings.SetTimeRemain(time);
+    }
+    
+    public void SetQuest(string text)
+    {
+        MenuSettings.SetQuest(text);
     }
 }

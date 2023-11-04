@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
-using TMPro;
 
 public class GameMenuSettings : MonoBehaviour
 {
@@ -15,7 +14,9 @@ public class GameMenuSettings : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject WinPanel;
     public GameObject LosePanel;
-    public TextMeshProUGUI loseCauseTMP;
+    public Text LoseCauseText;
+    public Text QuestText;
+    public Text TimeRemainText;
 
     public void Opensettings()
     {
@@ -78,6 +79,23 @@ public class GameMenuSettings : MonoBehaviour
     public void OnLose(string loseCause)
     {
         LosePanel.SetActive(true);
-        loseCauseTMP.text = loseCause;
+        LoseCauseText.text = loseCause;
+    }
+
+    public void SetTimeRemain(float time)
+    {
+        if (time == 0)
+        {
+            TimeRemainText.enabled = false;
+        }
+        else
+        {
+            TimeRemainText.text = $"Осталось времени: {time}";
+        }
+    }
+
+    public void SetQuest(string text)
+    {
+        QuestText.text = text;
     }
 }
