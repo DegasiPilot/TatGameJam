@@ -13,6 +13,10 @@ public class LoseOnDie : MonoBehaviour
 
     private void OnDestroy()
     {
-        gameManager.Lose();
+        try
+        {
+            gameManager.Lose();
+        }
+        catch { }
     }
 }

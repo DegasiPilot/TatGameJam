@@ -2830,8 +2830,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 8395926219550046359, guid: a03db4aa266339b409c5fee2243e11a4, type: 3}
   - {fileID: 8395926219550046359, guid: cda4bc5233d4f9448b5766c85b7e926a, type: 3}
+  - {fileID: 8395926219550046359, guid: a03db4aa266339b409c5fee2243e11a4, type: 3}
   SpawnDelay: 1
   SpawnCount: 15
   Boss: {fileID: 4912933663062637584, guid: 2e9a7e510fcf79647b28c5ce26c6d004, type: 3}
@@ -2849,8 +2849,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 1769589042507780330, guid: 2f8a201163381f3449ab27389369b200, type: 3}
-  MinOffset: 15
-  MaxOffset: 70
+  MinOffset: 8
+  MaxOffset: 35
 --- !u!4 &652767182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5925666140943158132, guid: 03b3aa92860943b47899d11f3daae484, type: 3}

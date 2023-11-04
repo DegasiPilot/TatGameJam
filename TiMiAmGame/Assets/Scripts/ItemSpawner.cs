@@ -14,9 +14,10 @@ public class ItemSpawner : MonoBehaviour
     public void Spawn(GameManager gameManager)
     {
         direction = new Vector2(
-            Random.Range(0, 1),
-            Random.Range(-1, 1)
+            Random.value,
+            Random.value * Random.Range(-1,1)
             );
+        direction = direction == Vector2.zero ? Vector2.right : direction.normalized;
         offset = Random.Range(MinOffset, MaxOffset);
         ItemScript item = Instantiate(Item, (Vector2)transform.position + direction * offset, Quaternion.identity).GetComponent<ItemScript>();
         item.SetUp(gameManager);
