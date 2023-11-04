@@ -17,6 +17,7 @@ public class BossScript : MonoBehaviour
     private UnitScript unitScript;
     private bool attackReady;
     private Vector2 targetRelativePos;
+    private GameManager gameManager;
 
     private Vector2 shellOffset;
     private Vector2 shellEndPos;
@@ -24,7 +25,7 @@ public class BossScript : MonoBehaviour
     private Quaternion shellRotation;
     private Vector2 shellPosition;
 
-    public void SetUp(PlayerController player)
+    public void SetUp(PlayerController player, GameManager gameManager)
     {
         this.player = player;
         rb = GetComponent<Rigidbody2D>();
@@ -32,6 +33,7 @@ public class BossScript : MonoBehaviour
         attackReady = true;
         shellOffset = GetComponent<CapsuleCollider2D>().size / 2;
         unitScript = GetComponent<UnitScript>();
+        this.gameManager = gameManager;
     }
 
     private void FixedUpdate()
@@ -78,5 +80,10 @@ public class BossScript : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+    }
+
+    private void OnDestroy()
+    {
+        gameManager.StartCoroutine(gameManager.BossSlain());
     }
 }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public EnemySpawner EnemySpawner;
     public GameObject Obstacles;
     public GameObject Camp;
+    public ItemSpawner ItemSpawner;
 
     [HideInInspector] public PlayerController Player;
     [HideInInspector] public List<EnemyController> Enemies;
@@ -35,6 +36,12 @@ public class GameManager : MonoBehaviour
                 );
         }
         unitScripts.ForEach(x => x.SetUp(x.TryGetComponent(out playerController), true));
-        EnemySpawner.SetUp(Player, Units, Camp);
+        EnemySpawner.SetUp(Player, Units, Camp, this);
+    }
+
+    public IEnumerator BossSlain()
+    {
+        yield return new WaitForEndOfFrame();
+        ItemSpawner.Spawn();
     }
 }
