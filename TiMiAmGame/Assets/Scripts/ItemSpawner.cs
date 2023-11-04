@@ -18,7 +18,7 @@ public class ItemSpawner : MonoBehaviour
             Random.Range(-1, 1)
             );
         offset = Random.Range(MinOffset, MaxOffset);
-        ItemScript item = Instantiate(Item, direction * offset, Quaternion.identity).GetComponent<ItemScript>();
+        ItemScript item = Instantiate(Item, (Vector2)transform.position + direction * offset, Quaternion.identity).GetComponent<ItemScript>();
         item.SetUp(gameManager);
     }
 }
