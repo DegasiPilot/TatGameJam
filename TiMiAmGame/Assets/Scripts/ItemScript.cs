@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
+    public float SeconsBeforDestroy;
+
     private GameManager gameManager;
 
     public void SetUp(GameManager gameManager)
     {
         this.gameManager = gameManager;
+        StartCoroutine(DestroyTimer());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,5 +22,12 @@ public class ItemScript : MonoBehaviour
             Destroy(gameObject);
             gameManager.Win();
         }
+    }
+
+    private IEnumerator DestroyTimer()
+    {
+        yield return new WaitForSeconds(SeconsBeforDestroy);
+        Destroy(gameObject);
+        gameManager.Lose();
     }
 }
