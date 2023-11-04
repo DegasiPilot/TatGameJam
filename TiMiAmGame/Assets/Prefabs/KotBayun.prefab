@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objsound: []
-  MaxHP: 15
+  MaxHP: 25
   healthBar: {fileID: 6362891930208881908}
 --- !u!114 &6733218452525662112
 MonoBehaviour:
@@ -362,11 +362,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 4
-  AttackDistance: 10
+  AttackDistance: 9
   Damage: 4
   RechargeTime: 0.8
   Shell: {fileID: 1220337250591968925, guid: 453e6147e49bab146916a69e2d7ce12f, type: 3}
-  shellSpeed: 7
+  shellSpeed: 8
 --- !u!50 &3152730278242176604
 Rigidbody2D:
   serializedVersion: 4
