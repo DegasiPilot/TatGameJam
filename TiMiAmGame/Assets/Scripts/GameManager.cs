@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour
     public GameObject Obstacles;
     public GameObject Camp;
     public ItemSpawner ItemSpawner;
+    public GameMenuSettings MenuSettings;
 
     [HideInInspector] public PlayerController Player;
     [HideInInspector] public List<EnemyController> Enemies;
 
     private List<UnitScript> unitScripts;
+    private List<LoseOnDie> loseScripts;
     private PlayerController playerController;
+    private GameObject finalItem;
 
     private void Start()
     {
@@ -30,18 +33,30 @@ public class GameManager : MonoBehaviour
         foreach(UnitScript unit in unitScripts)
         {
             isPlayer = unit.TryGetComponent(out playerController);
-            unit.SetUp(
-                isPlayer,
-                isPlayer || unit == campUnit
-                );
+            unit.SetUp(isPlayer);
         }
-        unitScripts.ForEach(x => x.SetUp(x.TryGetComponent(out playerController), true));
+        unitScripts.ForEach(x => x.SetUp(x.TryGetComponent(out playerController)));
+        loseScripts = Units.GetComponentsInChildren<LoseOnDie>().ToList();
+        loseScripts.ForEach(x => x.SetUp(this));
         EnemySpawner.SetUp(Player, Units, Camp, this);
+        Time.timeScale = 1;
     }
 
     public IEnumerator BossSlain()
     {
         yield return new WaitForEndOfFrame();
-        ItemSpawner.Spawn();
+        ItemSpawner.Spawn(this);
+    }
+
+    public void Win()
+    {
+        MenuSettings.OnWin();
+        Time.timeScale = 0;
+    }
+
+    public void Lose()
+    {
+        MenuSettings.OnLose();
+        Time.timeScale = 0;
     }
 }

@@ -11,13 +11,14 @@ public class ItemSpawner : MonoBehaviour
     private Vector2 direction;
     private float offset;
 
-    public void Spawn()
+    public void Spawn(GameManager gameManager)
     {
         direction = new Vector2(
             Random.Range(0, 1),
             Random.Range(-1, 1)
             );
         offset = Random.Range(MinOffset, MaxOffset);
-        Instantiate(Item, direction * offset, Quaternion.identity);
+        ItemScript item = Instantiate(Item, direction * offset, Quaternion.identity).GetComponent<ItemScript>();
+        item.SetUp(gameManager);
     }
 }

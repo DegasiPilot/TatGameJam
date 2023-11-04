@@ -12,6 +12,8 @@ public class GameMenuSettings : MonoBehaviour
     public GameObject pausePanel;
     public GameObject settingsPanel;
     public GameObject pauseMenu;
+    public GameObject WinPanel;
+    public GameObject LosePanel;
 
     public void Opensettings()
     {
@@ -61,5 +63,18 @@ public class GameMenuSettings : MonoBehaviour
         am.SetFloat("FoneMusic", slidermus);
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
+    public void OnWin()
+    {
+        WinPanel.SetActive(true);
+    }
+
+    public void OnLose()
+    {
+        LosePanel.SetActive(true);
+    }
 }
