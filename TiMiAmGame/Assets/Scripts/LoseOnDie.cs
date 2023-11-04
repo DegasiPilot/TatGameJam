@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LoseOnDie : MonoBehaviour
 {
+    public string Name;
+
     private GameManager gameManager;
 
     public void SetUp(GameManager gameManager)
@@ -15,7 +17,7 @@ public class LoseOnDie : MonoBehaviour
     {
         try
         {
-            gameManager.Lose();
+            gameManager.Lose(Name + " потерял все жизни");
         }
         catch { }
     }

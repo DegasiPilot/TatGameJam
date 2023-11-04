@@ -54,9 +54,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void Lose()
+    public void Lose(string loseCause)
     {
-        MenuSettings.OnLose();
+        MenuSettings.OnLose(loseCause);
         Time.timeScale = 0;
     }
 }

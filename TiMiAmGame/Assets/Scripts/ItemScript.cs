@@ -28,6 +28,6 @@ public class ItemScript : MonoBehaviour
     {
         yield return new WaitForSeconds(SeconsBeforDestroy);
         Destroy(gameObject);
-        gameManager.Lose();
+        gameManager.Lose("Не успел подобрать ингридиент!");
     }
 }

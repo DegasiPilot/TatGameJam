@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using TMPro;
 
 public class GameMenuSettings : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameMenuSettings : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject WinPanel;
     public GameObject LosePanel;
+    public TextMeshProUGUI loseCauseTMP;
 
     public void Opensettings()
     {
@@ -73,8 +75,9 @@ public class GameMenuSettings : MonoBehaviour
         WinPanel.SetActive(true);
     }
 
-    public void OnLose()
+    public void OnLose(string loseCause)
     {
         LosePanel.SetActive(true);
+        loseCauseTMP.text = loseCause;
     }
 }
