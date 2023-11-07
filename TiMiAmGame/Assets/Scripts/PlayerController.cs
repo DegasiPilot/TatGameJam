@@ -13,11 +13,11 @@ public class PlayerController : MonoBehaviour
     private GameObject obstacles;
 
     // Start is called before the first frame update
-    public void SetUp(GameObject obstacles)
+    public void SetUp()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        this.obstacles = obstacles;
+        spriteRenderer.sprite = GeneralData.HeroSprite;
         Weapon.SetUp(obstacles);
         weaponTrigger = Weapon.GetComponent<BoxCollider2D>();
     }

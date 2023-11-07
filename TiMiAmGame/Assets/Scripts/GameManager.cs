@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         Player = Units.GetComponentInChildren<PlayerController>();
         Enemies = Units.GetComponentsInChildren<EnemyController>().ToList();
         
-        Player.SetUp(Obstacles);
+        Player.SetUp();
         Enemies.ForEach(x => x.SetUp(Player,Camp));
         bool isPlayer;
         UnitScript campUnit = Camp.GetComponent<UnitScript>();
