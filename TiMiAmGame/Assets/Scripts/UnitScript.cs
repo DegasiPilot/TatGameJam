@@ -7,12 +7,17 @@ public class UnitScript : Music
 {
     public float MaxHP;
     public Slider healthBar;
+    public float DropChanse;
+    public GameObject[] DroppingBonuses;
 
     [HideInInspector] float currentHP;
     private SpriteRenderer spriteRenderer;
     private bool isPlayer;
+    private PlayerController player;
+    private bool isBoss;
+    private BossScript boss;
 
-    public void SetUp(bool isPlayer)
+    public void SetUp()
     {
         currentHP = MaxHP;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -21,7 +26,8 @@ public class UnitScript : Music
             healthBar.maxValue = MaxHP;
             healthBar.value = currentHP;
         }
-        this.isPlayer = isPlayer;
+        isPlayer = TryGetComponent(out player);
+        isBoss = TryGetComponent(out boss);
     }
 
     public void GetDamage(float damage)
@@ -30,6 +36,16 @@ public class UnitScript : Music
         if (currentHP <= 0)
             Death();
         StartCoroutine(DamageAnim());
+        if (healthBar != null)
+            healthBar.value = currentHP;
+    }
+
+    public void Heal(float HP)
+    {
+        if (HP == -1)
+            currentHP = MaxHP;
+        else
+            currentHP += HP;
         if (healthBar != null)
             healthBar.value = currentHP;
     }
@@ -46,6 +62,19 @@ public class UnitScript : Music
         if (isPlayer)
         {
             PlaySound(objsound[1]);
+        }
+        else if (isBoss)
+        {
+            boss.OnSlain();
+        }
+
+        if (DroppingBonuses != null)
+        {
+            if (Random.value <= DropChanse)
+            {
+                int index = Random.Range(0, DroppingBonuses.Length);
+                Instantiate(DroppingBonuses[index], transform.position, Quaternion.identity);
+            }
         }
 
         Destroy(gameObject);

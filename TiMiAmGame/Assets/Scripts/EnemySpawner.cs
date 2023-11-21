@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = Enemies[Random.Range(0, Enemies.Count())];
             enemy = Instantiate(enemy, spawn);
             enemy.GetComponent<EnemyController>().SetUp(player,camp);
-            enemy.GetComponent<UnitScript>().SetUp(false);
+            enemy.GetComponent<UnitScript>().SetUp();
             enemy.transform.SetParent(units.transform);
             i++;
             yield return new WaitForSeconds(SpawnDelay);
@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
         Transform spawn = Spawns[Random.Range(0, Spawns.Count())];
         GameObject boss = Instantiate(Boss, spawn);
         boss.GetComponent<BossScript>().SetUp(player, gameManager);
-        boss.GetComponent<UnitScript>().SetUp(false);
+        boss.GetComponent<UnitScript>().SetUp();
         boss.transform.SetParent(units.transform);
     }
 }

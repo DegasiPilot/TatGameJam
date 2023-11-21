@@ -166,7 +166,7 @@ MonoBehaviour:
   Speed: 6
   AttackDistance: 3.5
   Damage: 1
-  RechargeTime: 0.5
+  RechargeTime: 0.7
 --- !u!114 &-7240526284890056016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +182,9 @@ MonoBehaviour:
   objsound: []
   MaxHP: 1
   healthBar: {fileID: 0}
+  DropChanse: 0.2
+  DroppingBonuses:
+  - {fileID: 578288963540274540, guid: b21321402cbe91e42ad7e1913e6e3605, type: 3}
 --- !u!82 &2672974591316933836
 AudioSource:
   m_ObjectHideFlags: 0

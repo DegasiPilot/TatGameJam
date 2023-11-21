@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
         foreach(UnitScript unit in unitScripts)
         {
             isPlayer = unit.TryGetComponent(out playerController);
-            unit.SetUp(isPlayer);
+            unit.SetUp();
         }
-        unitScripts.ForEach(x => x.SetUp(x.TryGetComponent(out playerController)));
+        unitScripts.ForEach(x => x.SetUp());
         loseScripts = Units.GetComponentsInChildren<LoseOnDie>().ToList();
         loseScripts.ForEach(x => x.SetUp(this));
         EnemySpawner.SetUp(Player, Units, Camp, this);

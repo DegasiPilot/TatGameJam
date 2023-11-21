@@ -51,10 +51,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3d1cda749abf8a047946f19b6554da83, type: 3}
   attackReady: 0
   HoldDistance: 1
-  AttackDistance: 7
+  AttackDistance: 8
   Damage: 1
-  RechargeTime: 0.25
+  RechargeTime: 0.3
   AnimSpeed: 25
+  RechargeSlider: {fileID: 0}
 --- !u!61 &4168635392142344707
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -2833,7 +2833,7 @@ MonoBehaviour:
   - {fileID: 8395926219550046359, guid: cda4bc5233d4f9448b5766c85b7e926a, type: 3}
   - {fileID: 8395926219550046359, guid: a03db4aa266339b409c5fee2243e11a4, type: 3}
   SpawnDelay: 1
-  SpawnCount: 15
+  SpawnCount: 20
   Boss: {fileID: 4912933663062637584, guid: 2e9a7e510fcf79647b28c5ce26c6d004, type: 3}
   BossDelay: 18
 --- !u!114 &637256599
@@ -6787,6 +6787,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 236868713}
     m_Modifications:
+    - target: {fileID: 106837105677830284, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 106837105677830284, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 254097076197117905, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6837,6 +6845,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7648684626541916498, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8426726795081877913, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8426726795081877913, guid: 915bcc7bb09df704881984c5950e4109, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

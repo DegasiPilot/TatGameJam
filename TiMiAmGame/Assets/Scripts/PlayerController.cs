@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float Speed = 7;
     public WeaponScript Weapon;
+    public Slider RechargeSlider;
+
+    [HideInInspector] public UnitScript unitScript; 
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -18,8 +22,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = GeneralData.HeroSprite;
-        Weapon.SetUp(obstacles);
+        Weapon.SetUp(obstacles, RechargeSlider);
         weaponTrigger = Weapon.GetComponent<BoxCollider2D>();
+        unitScript = GetComponent<UnitScript>();
     }
 
     // Update is called once per frame

@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 4
-  AttackDistance: 9
+  AttackDistance: 8
   Damage: 4
   RechargeTime: 0.8
   Shell: {fileID: 1220337250591968925, guid: 453e6147e49bab146916a69e2d7ce12f, type: 3}
