@@ -11,66 +11,48 @@ public class GameManager : MonoBehaviour
     public GameObject Camp;
     public ItemSpawner ItemSpawner;
     public GameMenuSettings MenuSettings;
+    public QuestSystem QuestSystem;
 
     [HideInInspector] public PlayerController Player;
     [HideInInspector] public List<EnemyController> Enemies;
 
     private List<UnitScript> unitScripts;
-    private List<LoseOnDie> loseScripts;
     private PlayerController playerController;
-    private GameObject finalItem;
 
     private void Start()
     {
         unitScripts = Units.GetComponentsInChildren<UnitScript>().ToList();
         Player = Units.GetComponentInChildren<PlayerController>();
         Enemies = Units.GetComponentsInChildren<EnemyController>().ToList();
-        
-        Player.SetUp();
+
+        EventManager.Setup();
+        Player.SetUp(Obstacles);
         Enemies.ForEach(x => x.SetUp(Player,Camp));
-        bool isPlayer;
         UnitScript campUnit = Camp.GetComponent<UnitScript>();
         foreach(UnitScript unit in unitScripts)
         {
-            isPlayer = unit.TryGetComponent(out playerController);
+            if(playerController == null) unit.TryGetComponent(out playerController);
             unit.SetUp();
         }
         unitScripts.ForEach(x => x.SetUp());
-        loseScripts = Units.GetComponentsInChildren<LoseOnDie>().ToList();
-        loseScripts.ForEach(x => x.SetUp(this));
         EnemySpawner.SetUp(Player, Units, Camp, this);
+        MenuSettings.Setup();
+        QuestSystem.Setup();
+        ItemSpawner.Setup();
+
+        EventManager.OnBossSlain.AddListener(BossSlain);
+
         SetQuest("Защитите лагерь!");
         Time.timeScale = 1;
     }
 
-    public IEnumerator BossSlain()
+    public void BossSlain()
     {
         SetQuest("Найдите ингридиент!");
-        yield return new WaitForEndOfFrame();
-        ItemSpawner.Spawn(this);
     }
 
-    public void Win()
-    {
-        MenuSettings.OnWin();
-        SetTimeRemain(0);
-        Time.timeScale = 0;
-    }
-
-    public void Lose(string loseCause)
-    {
-        MenuSettings.OnLose(loseCause);
-        SetTimeRemain(0);
-        Time.timeScale = 0;
-    }
-
-    public void SetTimeRemain(float time)
-    {
-        MenuSettings.SetTimeRemain(time);
-    }
-    
     public void SetQuest(string text)
     {
-        MenuSettings.SetQuest(text);
+        QuestSystem.SetQuest(text);
     }
 }

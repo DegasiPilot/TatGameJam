@@ -3142,6 +3142,53 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &894145593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 894145595}
+  - component: {fileID: 894145594}
+  m_Layer: 0
+  m_Name: QuestSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &894145594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894145593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6cda692ab4cb447b4b1a79b6799d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestText: {fileID: 1128140266}
+  TimeRemainText: {fileID: 640199946}
+  SecondsForItemQuest: 25
+--- !u!4 &894145595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894145593}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.961397, y: 0.3418513, z: -2.348572}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &894804729
 GameObject:
   m_ObjectHideFlags: 0
@@ -3525,6 +3572,7 @@ MonoBehaviour:
   Camp: {fileID: 494391829}
   ItemSpawner: {fileID: 637256599}
   MenuSettings: {fileID: 2085625889}
+  QuestSystem: {fileID: 894145594}
   Player: {fileID: 1451567279}
   Enemies: []
 --- !u!4 &1015238241
@@ -6530,8 +6578,6 @@ MonoBehaviour:
   WinPanel: {fileID: 1145908574}
   LosePanel: {fileID: 1822487246}
   LoseCauseText: {fileID: 1103301010}
-  QuestText: {fileID: 1128140266}
-  TimeRemainText: {fileID: 640199946}
 --- !u!4 &2088247638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5925666140943158132, guid: 03b3aa92860943b47899d11f3daae484, type: 3}
@@ -6937,3 +6983,4 @@ SceneRoots:
   - {fileID: 478126767}
   - {fileID: 119832015}
   - {fileID: 535072769}
+  - {fileID: 894145595}

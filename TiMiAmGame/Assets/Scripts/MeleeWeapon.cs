@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponScript : Music
+public class MelleWeapon : Music
 {
     [HideInInspector] public bool attackReady;
 
@@ -17,6 +17,7 @@ public class WeaponScript : Music
     private BoxCollider2D trigger;
     private bool blocked;
     private GameObject obstacles;
+    private Animator animator;
 
     public void SetUp(GameObject obstacles, Slider rechergeSlider)
     {
@@ -27,41 +28,18 @@ public class WeaponScript : Music
         this.obstacles = obstacles;
         RechargeSlider = rechergeSlider;
         rechergeSlider.maxValue = RechargeTime;
-    }
-
-    private void Update()
-    {
-        if (!trigger.enabled && Time.timeScale > 0)
-            RotateByMouse();
-    }
-
-    private void RotateByMouse()
-    {
-        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.parent.position;
-        direction.Normalize();
-        transform.localPosition = direction * HoldDistance;
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.localRotation = Quaternion.Euler(0f, 0f, rotZ);
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (attackReady)
-            {
-                StartCoroutine(Attack(direction));
-            }
-        }
+        animator = GetComponent<Animator>();
     }
 
     public IEnumerator Attack(Vector2 direction)
     {
         trigger.enabled = true;
-        Vector3 EndPos = direction * AttackDistance;
         attackReady = false;
         StartCoroutine(Recharge());
-        while (transform.localPosition != EndPos && !blocked)
-        {
-            transform.localPosition = Vector2.MoveTowards(transform.localPosition, EndPos, AnimSpeed * Time.deltaTime);
-            yield return new WaitForEndOfFrame();
-        }
+
+        animator.SetTrigger("Attack trigger");
+        yield return new WaitForEndOfFrame();
+        
         blocked = false;
         trigger.enabled = false;
         PlaySound(objsound[0]);
@@ -81,14 +59,14 @@ public class WeaponScript : Music
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.parent == obstacles)
+        if (collision.transform.parent == obstacles)
         {
             blocked = true;
             return;
         }
 
         UnitScript unit;
-        if(collision.TryGetComponent(out unit))
+        if (collision.TryGetComponent(out unit))
         {
             unit.GetDamage(Damage);
             blocked = true;

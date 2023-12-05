@@ -11,7 +11,12 @@ public class ItemSpawner : MonoBehaviour
     private Vector2 direction;
     private float offset;
 
-    public void Spawn(GameManager gameManager)
+    public void Setup()
+    {
+        EventManager.OnBossSlain.AddListener(Spawn);
+    }
+
+    public void Spawn()
     {
         direction = new Vector2(
             Random.value,
@@ -19,7 +24,6 @@ public class ItemSpawner : MonoBehaviour
             );
         direction = direction == Vector2.zero ? Vector2.right : direction.normalized;
         offset = Random.Range(MinOffset, MaxOffset);
-        ItemScript item = Instantiate(Item, (Vector2)transform.position + direction * offset, Quaternion.identity).GetComponent<ItemScript>();
-        item.SetUp(gameManager);
+        Instantiate(Item, (Vector2)transform.position + direction * offset, Quaternion.identity).GetComponent<ItemScript>();
     }
 }

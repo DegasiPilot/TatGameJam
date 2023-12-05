@@ -14,10 +14,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D weaponTrigger;
-    private GameObject obstacles;
 
     // Start is called before the first frame update
-    public void SetUp()
+    public void SetUp(GameObject obstacles)
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -66,6 +65,21 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    //public void TakeBonus(BonusType bonusType, float bonusForce, float time)
+    //{
+    //    switch (bonusType)
+    //    {
+    //        case BonusType.Damage
+    //    }
+    //}
+
+    //private IEnumerator UpStat(ref float stat, float force, float time)
+    //{
+    //    stat += force;
+    //    yield return new WaitForSeconds(time);
+    //    stat -= force;
+    //}
 
     public void TakeItem()
     {

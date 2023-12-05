@@ -82,8 +82,8 @@ public class BossScript : MonoBehaviour
         }
     }
 
-    public void OnSlain()
+    public void OnDestroy()
     {
-        gameManager.StartCoroutine(gameManager.BossSlain());
+        EventManager.OnBossSlain.Invoke();
     }
 }

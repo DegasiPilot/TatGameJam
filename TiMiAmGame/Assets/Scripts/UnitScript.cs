@@ -14,7 +14,6 @@ public class UnitScript : Music
     private SpriteRenderer spriteRenderer;
     private bool isPlayer;
     private PlayerController player;
-    private bool isBoss;
     private BossScript boss;
 
     public void SetUp()
@@ -27,7 +26,6 @@ public class UnitScript : Music
             healthBar.value = currentHP;
         }
         isPlayer = TryGetComponent(out player);
-        isBoss = TryGetComponent(out boss);
     }
 
     public void GetDamage(float damage)
@@ -62,10 +60,6 @@ public class UnitScript : Music
         if (isPlayer)
         {
             PlaySound(objsound[1]);
-        }
-        else if (isBoss)
-        {
-            boss.OnSlain();
         }
 
         if (DroppingBonuses != null)

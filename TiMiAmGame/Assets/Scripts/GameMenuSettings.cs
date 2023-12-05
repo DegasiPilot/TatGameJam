@@ -15,8 +15,12 @@ public class GameMenuSettings : MonoBehaviour
     public GameObject WinPanel;
     public GameObject LosePanel;
     public Text LoseCauseText;
-    public Text QuestText;
-    public Text TimeRemainText;
+
+    public void Setup()
+    {
+        EventManager.OnLose.AddListener(OnLose);
+        EventManager.OnWin.AddListener(OnWin);
+    }
 
     public void Opensettings()
     {
@@ -80,22 +84,5 @@ public class GameMenuSettings : MonoBehaviour
     {
         LosePanel.SetActive(true);
         LoseCauseText.text = loseCause;
-    }
-
-    public void SetTimeRemain(float time)
-    {
-        if (time == 0)
-        {
-            TimeRemainText.enabled = false;
-        }
-        else
-        {
-            TimeRemainText.text = $"Осталось времени: {time}";
-        }
-    }
-
-    public void SetQuest(string text)
-    {
-        QuestText.text = text;
     }
 }
